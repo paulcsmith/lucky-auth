@@ -1,5 +1,5 @@
 class Home::Index < BrowserAction
   get "/" do
-    render Lucky::WelcomePage
+    redirect to: SignUps::New
   end
 end
