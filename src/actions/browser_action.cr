@@ -1,5 +1,6 @@
 abstract class BrowserAction < Lucky::Action
   include Lucky::ProtectFromForgery
+  include RequireSignIn
   # If something should always be exposed to your pages, expose them here.
   #
   # Example:

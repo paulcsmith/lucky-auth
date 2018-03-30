@@ -1,5 +1,5 @@
 class Home::Index < BrowserAction
   get "/" do
-    redirect to: SignUps::New
+    redirect to: Users::Index
   end
 end

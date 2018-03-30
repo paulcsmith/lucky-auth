@@ -1,4 +1,6 @@
 class SignUps::Create < BrowserAction
+  include SkipRequireSignIn
+
   action do
     SignUpForm.create(params) do |form, user|
       if user
