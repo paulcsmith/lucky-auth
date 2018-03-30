@@ -3,6 +3,7 @@ module Shared::Layout
     include Lucky::HTMLPage
     include Shared::FieldErrorsComponent
     include Shared::FlashComponent
+    include Shared::Field
 
     needs signed_in? : Bool
   end

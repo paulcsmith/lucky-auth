@@ -8,19 +8,14 @@ class SignUps::NewPage < GuestLayout
 
   private def render_sign_up_form(f)
     form_for SignUps::Create do
-      label_for f.email
-      email_input f.email
-      errors_for f.email
-
-      label_for f.password
-      password_input f.password
-      errors_for f.password
-
-      label_for f.password_confirmation
-      password_input f.password_confirmation
-      errors_for f.password_confirmation
-
+      sign_up_fields(f)
       submit "Sign Up"
     end
+  end
+
+  private def sign_up_fields(f)
+    field(f.email) { |i| email_input i, autofocus: "true" }
+    field(f.password) { |i| password_input i }
+    field(f.password_confirmation) { |i| password_input i }
   end
 end

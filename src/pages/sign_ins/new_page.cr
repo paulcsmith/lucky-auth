@@ -8,16 +8,14 @@ class SignIns::NewPage < GuestLayout
 
   private def render_sign_in_form(f)
     form_for SignIns::Create do
-      label_for f.email
-      email_input f.email
-      errors_for f.email
-
-      label_for f.password
-      password_input f.password
-      errors_for f.password
-
+      sign_in_fields(f)
       submit "Sign In"
     end
     link "Sign up instead", to: SignUps::New
+  end
+
+  private def sign_in_fields(f)
+    field(f.email) { |i| email_input i, autofocus: "true" }
+    field(f.password) { |i| password_input i }
   end
 end
