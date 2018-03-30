@@ -8,7 +8,7 @@ module Authentic::SignInFormHelpers
   end
 
   def submit
-    prepare
+    on_submit(user_from_email)
     if valid?
       yield self, user_from_email
     else

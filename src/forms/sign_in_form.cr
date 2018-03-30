@@ -7,22 +7,17 @@ class SignInForm < LuckyRecord::VirtualForm
   allow_virtual email : String
   allow_virtual password : String
 
-  private def prepare
-    validate_email_found
-    validate_email_and_password_match
-  end
-
-  private def validate_email_found
-    if user_from_email.nil?
+  private def on_submit(user : User?)
+    if user
+      validate_email_and_password_match(user)
+    else
       email.add_error "is not in our system"
     end
   end
 
-  private def validate_email_and_password_match
-    user_from_email.try do |user|
-      unless Authentic::SignInFormHelpers.correct_password?(user, password)
-        password.add_error "is incorrect"
-      end
+  private def validate_email_and_password_match(user : User)
+    unless Authentic::SignInFormHelpers.correct_password?(user, password)
+      password.add_error "is incorrect"
     end
   end
 end
