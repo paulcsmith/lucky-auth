@@ -11,4 +11,9 @@ module RedirectIfSignedIn
       continue
     end
   end
+
+  # current_user should always be nil since the action will redirect if
+  # the user is signed in
+  def current_user
+  end
 end
