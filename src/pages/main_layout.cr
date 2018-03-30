@@ -16,6 +16,9 @@ abstract class MainLayout
       body do
         h1 "Signed in as: "
         text @current_user.email
+        text "("
+        link "Sign out", to: SignIns::Delete
+        text ")"
         render_flash
         content
       end

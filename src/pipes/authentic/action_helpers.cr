@@ -3,6 +3,10 @@ module Authentic::ActionHelpers
     session["user_id"] = user.id.to_s
   end
 
+  private def sign_out
+    session.destroy
+  end
+
   private def signed_in? : Bool
     !!current_user?
   end
