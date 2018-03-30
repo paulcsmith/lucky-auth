@@ -8,7 +8,7 @@ class SignUpForm < User::BaseForm
     validate_required password, password_confirmation
     validate_confirmation_of password, with: password_confirmation
     validate_size_of password, min: 6
-    Authentic::SignUpFormHelpers.save_encrypted password, to: encrypted_password
+    Authentic.save_encrypted password, to: encrypted_password
   end
 
   private def validate_uniqueness_of(

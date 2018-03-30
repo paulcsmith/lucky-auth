@@ -10,7 +10,7 @@ module Authentic::SignInFormHelpers
   end
 
   def submit
-    on_submit(user_from_email)
+    validate_allowed_to_sign_in(user_from_email)
     if valid?
       yield self, user_from_email
     else
@@ -18,23 +18,7 @@ module Authentic::SignInFormHelpers
     end
   end
 
-  abstract def on_submit(user : User?)
-
-  def self.on_incorrect_password(
-    user : User,
-    password_field : LuckyRecord::Field | LuckyRecord::AllowedField
-  )
-    unless correct_password?(user, password_field)
-      yield
-    end
-  end
-
-  def self.correct_password?(
-    user : User,
-    password_field : LuckyRecord::Field | LuckyRecord::AllowedField
-  ) : Bool
-    Crypto::Bcrypt::Password.new(user.encrypted_password) == password_field.value.to_s
-  end
+  abstract def validate_allowed_to_sign_in(user)
 
   private def user_from_email : User?
     email.value.try do |value|
