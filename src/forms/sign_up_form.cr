@@ -12,9 +12,9 @@ class SignUpForm < User::BaseForm
   end
 
   private def validate_uniqueness_of(
-    field,
+    field : LuckyRecord::Field | LuckyRecord::AllowedField,
     query : LuckyRecord::Criteria? = nil,
-    message = "is already taken"
+    message : String = "is already taken"
   )
     field.value.try do |value|
       prepared_query = prepare_query(query, field.name, value)
