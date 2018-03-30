@@ -7,7 +7,7 @@ module RequireSignIn
     if signed_in?
       continue
     else
-      flash.info = "Please sign in with your thoughtbot Slack account"
+      flash.info = "Please sign in first"
       redirect to: SignIns::New
     end
   end
