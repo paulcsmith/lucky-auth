@@ -1,5 +1,5 @@
 class SignUps::New < BrowserAction
-  include RedirectIfSignedIn
+  include Auth::RedirectIfSignedIn
 
   get "/sign_up" do
     render NewPage, form: SignUpForm.new

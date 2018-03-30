@@ -1,6 +1,6 @@
-module RedirectIfSignedIn
+module Auth::RedirectIfSignedIn
   macro included
-    include SkipRequireSignIn
+    include Auth::SkipRequireSignIn
     before redirect_if_signed_in
     unexpose current_user
   end

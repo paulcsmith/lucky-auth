@@ -1,5 +1,5 @@
 class SignIns::Create < BrowserAction
-  include RedirectIfSignedIn
+  include Auth::RedirectIfSignedIn
 
   action do
     SignInForm.submit(params) do |form, authenticated_user|

@@ -20,13 +20,19 @@ module Authentic::SignInFormHelpers
 
   abstract def on_submit(user : User?)
 
-  def self.on_incorrect_password(user : User, password_field)
+  def self.on_incorrect_password(
+    user : User,
+    password_field : LuckyRecord::Field | LuckyRecord::AllowedField
+  )
     unless correct_password?(user, password_field)
       yield
     end
   end
 
-  def self.correct_password?(user : User, password_field) : Bool
+  def self.correct_password?(
+    user : User,
+    password_field : LuckyRecord::Field | LuckyRecord::AllowedField
+  ) : Bool
     Crypto::Bcrypt::Password.new(user.encrypted_password) == password_field.value.to_s
   end
 

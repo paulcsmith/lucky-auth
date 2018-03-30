@@ -1,7 +1,7 @@
 abstract class BrowserAction < Lucky::Action
   include Lucky::ProtectFromForgery
   include Authentic::ActionHelpers
-  include RequireSignIn
+  include Auth::RequireSignIn
   expose current_user
   expose signed_in?
 

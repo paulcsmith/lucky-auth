@@ -1,4 +1,4 @@
-module RequireSignIn
+module Auth::RequireSignIn
   macro included
     before require_sign_in
   end
