@@ -1,5 +1,5 @@
 class SignIns::New < BrowserAction
-  include SkipRequireSignIn
+  include RedirectIfSignedIn
 
   action do
     render NewPage, form: SignInForm.new
