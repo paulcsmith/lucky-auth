@@ -2,9 +2,9 @@ class SignIns::Create < BrowserAction
   include SkipRequireSignIn
 
   action do
-    SignInForm.submit(params) do |form, signed_in_user|
-      if signed_in_user
-        session["user_id"] = signed_in_user.id.to_s
+    SignInForm.submit(params) do |form, authenticated_user|
+      if authenticated_user
+        sign_in(authenticated_user)
         flash.success = "Sign in worked!"
         redirect to: Users::Index
       else
