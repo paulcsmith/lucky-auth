@@ -1,4 +1,4 @@
-class SignUps::NewPage < MainLayout
+class SignUps::NewPage < GuestLayout
   needs form : SignUpForm
 
   def content
