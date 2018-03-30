@@ -3,8 +3,6 @@ class SignIns::NewPage < GuestLayout
 
   def content
     h1 "Sign In"
-    text "or "
-    link "Sign Up", to: SignUps::New
     render_sign_in_form(@form)
   end
 
@@ -20,5 +18,6 @@ class SignIns::NewPage < GuestLayout
 
       submit "Sign In"
     end
+    link "Sign up instead", to: SignUps::New
   end
 end
