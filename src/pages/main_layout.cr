@@ -7,6 +7,7 @@ abstract class MainLayout
   #
   # Example:
   #   needs current_user : User
+  needs current_user : User
 
   abstract def content
 
@@ -24,6 +25,8 @@ abstract class MainLayout
       end
 
       body do
+        h1 "Signed in as: "
+        text @current_user.email
         render_flash
         content
       end
