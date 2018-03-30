@@ -1,7 +1,7 @@
 class SignIns::New < BrowserAction
   include RedirectIfSignedIn
 
-  action do
+  get "/sign_in" do
     render NewPage, form: SignInForm.new
   end
 end
