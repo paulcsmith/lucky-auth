@@ -4,7 +4,7 @@ class SignUpForm < User::BaseForm
   allow_virtual password_confirmation : String
 
   def prepare
-    validate_uniqueness_of(email, query: UserQuery.new.email, message: "is not available")
+    validate_uniqueness_of email, query: UserQuery.new.email, message: "is not available"
     validate_required password, password_confirmation
     validate_confirmation_of password, with: password_confirmation
     validate_size_of password, min: 6
