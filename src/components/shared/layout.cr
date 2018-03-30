@@ -3,6 +3,8 @@ module Shared::Layout
     include Lucky::HTMLPage
     include Shared::FieldErrorsComponent
     include Shared::FlashComponent
+
+    needs signed_in? : Bool
   end
 
   abstract def content

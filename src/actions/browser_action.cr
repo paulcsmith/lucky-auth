@@ -3,6 +3,7 @@ abstract class BrowserAction < Lucky::Action
   include Authentic::ActionHelpers
   include RequireSignIn
   expose current_user
+  expose signed_in?
   # If something should always be exposed to your pages, expose them here.
   #
   # Example:

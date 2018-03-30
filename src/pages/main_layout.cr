@@ -1,10 +1,9 @@
 abstract class MainLayout
+  # Edit shared layout code in src/components/shared/layout.cr
   include Shared::Layout
 
-  # You can put things here that all pages need
-  #
-  # Example:
-  #   needs current_user : User
+  # 'needs current_user : User' makes it so that the current_user
+  # is always required for pages using MainLayout
   needs current_user : User
 
   def render
@@ -14,14 +13,17 @@ abstract class MainLayout
       shared_layout_head
 
       body do
-        h1 "Signed in as: "
-        text @current_user.email
-        text "("
-        link "Sign out", to: SignIns::Delete
-        text ")"
         render_flash
+        render_signed_in_user
         content
       end
     end
+  end
+
+  private def render_signed_in_user
+    h1 "Signed in as: "
+    text @current_user.email
+    text " - "
+    link "Sign out", to: SignIns::Delete
   end
 end
