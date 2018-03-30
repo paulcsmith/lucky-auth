@@ -1,7 +1,5 @@
 abstract class MainLayout
-  include Lucky::HTMLPage
-  include Shared::FieldErrorsComponent
-  include Shared::FlashComponent
+  include Shared::Layout
 
   # You can put things here that all pages need
   #
@@ -9,20 +7,11 @@ abstract class MainLayout
   #   needs current_user : User
   needs current_user : User
 
-  abstract def content
-
   def render
     html_doctype
 
     html lang: "en" do
-      head do
-        utf8_charset
-        title page_title
-        css_link asset("css/app.css")
-        js_link asset("js/app.js")
-        csrf_meta_tags
-        responsive_meta_tag
-      end
+      shared_layout_head
 
       body do
         h1 "Signed in as: "
@@ -31,9 +20,5 @@ abstract class MainLayout
         content
       end
     end
-  end
-
-  def page_title
-    "Welcome to Lucky"
   end
 end
