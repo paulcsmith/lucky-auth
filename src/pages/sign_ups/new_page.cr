@@ -2,7 +2,7 @@ class SignUps::NewPage < GuestLayout
   needs form : SignUpForm
 
   def content
-    h1 "Sign Up!"
+    h1 "Sign Up"
     render_sign_up_form(@form)
   end
 
@@ -11,6 +11,7 @@ class SignUps::NewPage < GuestLayout
       sign_up_fields(f)
       submit "Sign Up"
     end
+    link "Sign in instead", to: SignIns::New
   end
 
   private def sign_up_fields(f)
