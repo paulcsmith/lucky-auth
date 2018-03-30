@@ -1,3 +1,5 @@
+require "crypto/bcrypt/password"
+
 module Authentic::SignUpFormHelpers
   Habitat.create do
     setting encryption_cost : Int32 = 10

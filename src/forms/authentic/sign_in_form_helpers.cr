@@ -1,3 +1,5 @@
+require "crypto/bcrypt/password"
+
 module Authentic::SignInFormHelpers
   macro included
     def self.submit(params)
@@ -13,6 +15,14 @@ module Authentic::SignInFormHelpers
       yield self, user_from_email
     else
       yield self, nil
+    end
+  end
+
+  abstract def on_submit(user : User?)
+
+  def self.on_incorrect_password(user : User, password_field)
+    unless correct_password?(user, password_field)
+      yield
     end
   end
 

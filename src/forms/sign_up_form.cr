@@ -1,5 +1,3 @@
-require "crypto/bcrypt/password"
-
 class SignUpForm < User::BaseForm
   allow email
   allow_virtual password : String

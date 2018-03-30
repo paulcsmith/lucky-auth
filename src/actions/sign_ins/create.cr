@@ -5,7 +5,7 @@ class SignIns::Create < BrowserAction
     SignInForm.submit(params) do |form, authenticated_user|
       if authenticated_user
         sign_in(authenticated_user)
-        flash.success = "Sign in worked!"
+        flash.success = "Sign in worked"
         redirect to: Users::Index
       else
         flash.danger = "Sign in failed"
