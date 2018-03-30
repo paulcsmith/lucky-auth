@@ -20,7 +20,7 @@ class SignInForm < LuckyRecord::VirtualForm
 
   private def validate_email_and_password_match
     user_from_email.try do |user|
-      unless password_matches?(user)
+      unless Authentic::SignInFormHelpers.correct_password?(user, password)
         password.add_error "is incorrect"
       end
     end

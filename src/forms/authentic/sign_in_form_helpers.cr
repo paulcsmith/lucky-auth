@@ -16,8 +16,8 @@ module Authentic::SignInFormHelpers
     end
   end
 
-  private def password_matches?(user : User) : Bool
-    Crypto::Bcrypt::Password.new(user.encrypted_password) == password.value.to_s
+  def self.correct_password?(user : User, password_field) : Bool
+    Crypto::Bcrypt::Password.new(user.encrypted_password) == password_field.value.to_s
   end
 
   private def user_from_email : User?
