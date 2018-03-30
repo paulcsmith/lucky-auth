@@ -1,8 +1,8 @@
 module Shared::Layout
   macro included
     include Lucky::HTMLPage
-    include Shared::FieldErrorsComponent
-    include Shared::FlashComponent
+    include Shared::FieldErrors
+    include Shared::FlashMessages
     include Shared::Field
 
     needs signed_in? : Bool

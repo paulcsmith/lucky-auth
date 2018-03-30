@@ -1,4 +1,4 @@
-module Shared::FieldErrorsComponent
+module Shared::FieldErrors
   def errors_for(field : LuckyRecord::AllowedField)
     # Customize the markup and styles to match your application
     unless field.valid?
