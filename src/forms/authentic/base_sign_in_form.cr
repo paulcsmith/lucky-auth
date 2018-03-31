@@ -1,6 +1,6 @@
 require "crypto/bcrypt/password"
 
-module Authentic::SignInFormHelpers
+module Authentic::BaseSignInForm
   macro included
     def self.submit(params)
       new(params).submit do |form, user|

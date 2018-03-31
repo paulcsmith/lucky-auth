@@ -3,7 +3,7 @@ module Authentic
     setting encryption_cost : Int32 = 10
   end
 
-  def self.on_incorrect_password(
+  def self.when_password_is_wrong(
     user : User,
     password_field : LuckyRecord::Field | LuckyRecord::AllowedField
   )

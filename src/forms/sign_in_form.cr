@@ -1,7 +1,7 @@
-require "./authentic/sign_in_form_helpers"
+require "./authentic/base_sign_in_form"
 
 class SignInForm < LuckyRecord::VirtualForm
-  include Authentic::SignInFormHelpers
+  include Authentic::BaseSignInForm
 
   allow_virtual email : String
   allow_virtual password : String
@@ -15,8 +15,8 @@ class SignInForm < LuckyRecord::VirtualForm
   #      email.add_error "is locked out"
   #    end
   private def validate_allowed_to_sign_in(user : User)
-    Authentic.on_incorrect_password(user, password) do
-      password.add_error "is incorrect"
+    Authentic.when_password_is_wrong(user, password) do
+      password.add_error "is wrong"
     end
   end
 
