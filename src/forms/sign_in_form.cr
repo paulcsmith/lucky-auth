@@ -15,7 +15,7 @@ class SignInForm < LuckyRecord::VirtualForm
   #      email.add_error "is locked out"
   #    end
   private def validate_allowed_to_sign_in(user : User)
-    Authentic.when_password_is_wrong(user, password) do
+    unless Authentic.correct_password?(user, password.value.to_s)
       password.add_error "is wrong"
     end
   end

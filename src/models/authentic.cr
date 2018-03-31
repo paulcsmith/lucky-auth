@@ -5,16 +5,6 @@ module Authentic
     setting encryption_cost : Int32 = 10
   end
 
-  # Run the given block when the password field is incorrect
-  def self.when_password_is_wrong(
-    user : User,
-    password_field : LuckyRecord::Field | LuckyRecord::AllowedField
-  )
-    unless correct_password?(user, password_field.value.to_s)
-      yield
-    end
-  end
-
   # Checks whether the password is correct
   def self.correct_password?(
     user : User,
