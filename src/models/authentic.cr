@@ -30,4 +30,10 @@ module Authentic
       cost: settings.encryption_cost
     ).to_s
   end
+
+  # Send a password reset email to the user
+  def self.request_password_reset(user : User)
+    # generate password reset token
+    # send password reset email
+  end
 end

@@ -11,7 +11,9 @@ class SignIns::NewPage < GuestLayout
       sign_in_fields(f)
       submit "Sign In"
     end
-    link "Sign up instead", to: SignUps::New
+    link "Reset password", to: PasswordResets::New
+    text " | "
+    link "Sign up", to: SignUps::New
   end
 
   private def sign_in_fields(f)
