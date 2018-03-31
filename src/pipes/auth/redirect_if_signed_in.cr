@@ -13,8 +13,7 @@ module Auth::RedirectIfSignedIn
     end
   end
 
-  # current_user will always be nil since the action will redirect if
-  # the user is signed in
+  # current_user returns nil so that it won't accidentally be used
   def current_user
   end
 end
