@@ -11,7 +11,7 @@ class SignIns::NewPage < GuestLayout
       sign_in_fields(f)
       submit "Sign In"
     end
-    link "Reset password", to: PasswordResets::New
+    link "Reset password", to: PasswordResetRequests::New
     text " | "
     link "Sign up", to: SignUps::New
   end

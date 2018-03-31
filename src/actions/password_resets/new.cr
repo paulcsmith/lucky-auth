@@ -1,7 +1,9 @@
 class PasswordResets::New < BrowserAction
-  include Auth::RedirectIfSignedIn
+  param token : String
 
-  action do
-    render NewPage, form: RequestPasswordResetForm.new
+  get "/password_resets/:id" do
+    user = UserQuery.find(id)
+    Authentic.correct_password_reset_token?(user, token)
+    text "Password reset"
   end
 end

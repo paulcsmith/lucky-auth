@@ -1,5 +1,5 @@
-class PasswordResets::NewPage < GuestLayout
-  needs form : RequestPasswordResetForm
+class PasswordResetRequests::NewPage < GuestLayout
+  needs form : PasswordResetRequestForm
 
   def content
     h1 "Reset your password"
@@ -7,7 +7,7 @@ class PasswordResets::NewPage < GuestLayout
   end
 
   private def render_form(f)
-    form_for PasswordResets::Create do
+    form_for PasswordResetRequests::Create do
       field(f.email) { |i| email_input i }
       submit "Reset Password"
     end
