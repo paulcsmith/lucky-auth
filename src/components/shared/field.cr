@@ -19,11 +19,16 @@ module Shared::Field
   #    end
   #
   # You may also want to have more than one method if you render fields
-  # differently in different parts of your app, e.g.
-  # `compact_field` or `field_without_label`
-  private def field(field)
-    label_for field
+  # differently in different parts of your app, e.g. `compact_field`
+  private def field(field, hide_label : Bool = false, hide_errors : Bool = true, label_options = NamedTuple.new)
+    unless hide_label
+      label_for field, **label_options
+    end
+
     yield field
-    errors_for field
+
+    unless hide_errors
+      errors_for field
+    end
   end
 end
