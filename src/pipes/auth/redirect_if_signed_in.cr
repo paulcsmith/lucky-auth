@@ -7,6 +7,7 @@ module Auth::RedirectIfSignedIn
 
   private def redirect_if_signed_in
     if signed_in?
+      flash.success = "You are already signed in"
       redirect to: Home::Index
     else
       continue
