@@ -6,6 +6,21 @@ module Authentic
     setting default_password_reset_time_limit : Time::Span = 15.minutes
   end
 
+  def self.remember_requested_path(action : Lucky::Action)
+    if action.request.method.upcase == "GET"
+      action.session[:return_to] = action.request.resource
+    end
+  end
+
+  def self.redirect_to_originally_requested_path(
+    action : Lucky::Action,
+    fallback : Lucky::Action.class | Lucky::RouteHelper
+  )
+    return_to = action.session[:return_to]
+    action.session.delete(:return_to)
+    action.redirect to: return_to || fallback
+  end
+
   # Checks whether the password is correct
   def self.correct_password?(
     user : User,
@@ -34,8 +49,6 @@ module Authentic
 
   # Send a password reset email to the user
   def self.request_password_reset(user : User)
-    # generate password reset token
-    # send password reset email
     RequestPasswordResetEmail.new(
       user,
       generate_password_reset_token(user)

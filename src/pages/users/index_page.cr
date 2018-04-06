@@ -5,7 +5,7 @@ class Users::IndexPage < MainLayout
     h1 "Users"
     ul do
       @users.each do |user|
-        li user.email
+        li { link user.email, to: Users::Show.with(user.id) }
       end
     end
   end
